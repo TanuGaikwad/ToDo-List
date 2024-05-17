@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>To Do App</title>
+    <style>
+
+      .action-container{
+        display:flex;
+        justify-content:center;
+        margin-top:20px;
+      }  
+
+      .List-container{
+      background-color:#72ACC7;
+      width:300px;
+      height:200px;
+      overflow-y: scroll;
+      display:block;
+      margin:20px auto;
+      padding:10px;
+      border-radius:5px;
+      }
+
+      .todo-item{
+        background-color:#E5756D;
+        padding:5px 20px;
+        border-radius:30px;
+        color:#fff;
+        margin:5px;
+      }
+    </style>
+</head>
+<body>
+    
+    <div class="List-container" id="List-container"></div>
+
+
+    <div class="action-container">
+
+     <input type="text" id="input-todo"/>
+
+     <button onclick="add()">
+        Add
+    </button>
+
+    </div>
+    
+    <script>
+        const todoList = []
+
+        function add(){
+         const inputElement = document.getElementById('input-todo') 
+
+         todoList.push(inputElement.value)
+
+         inputElement.value = ""
+
+         renderToDoList()
+        }
+        
+        function renderToDoList(){
+            const ListContainer = document.getElementById('List-container')
+            ListContainer.innerHTML = ""
+
+            for (const todoItem of todoList){
+               
+                ListContainer.innerHTML += `<div class="todo-item">
+                  <input type="checkbox" /> 
+                    ${todoItem}</div>`
+            }
+        }
+      
+    </script>
+</body>
+</html>
